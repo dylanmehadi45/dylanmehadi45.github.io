@@ -1,0 +1,846 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dylan Mehadi — Portfolio cybersécurité</title>
+<meta name="description" content="Dylan Mehadi — étudiant en cybersécurité (BUT R&T, parcours Cybersécurité), alternant chez Orange. Portfolio : compétences, projets, TryHackMe et contact. Recherche une alternance en cybersécurité.">
+<meta name="author" content="Dylan Mehadi">
+<meta name="theme-color" content="#140b1f">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dylan Mehadi — Portfolio cybersécurité">
+<meta property="og:description" content="Dylan Mehadi — étudiant en cybersécurité (BUT R&T, parcours Cybersécurité), alternant chez Orange. Portfolio : compétences, projets, TryHackMe et contact. Recherche une alternance en cybersécurité.">
+<meta property="og:url" content="https://dylanmehadi45.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23140b1f'/%3E%3Cpath d='M14 20l12 12-12 12' stroke='%23ff2a6d' stroke-width='6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M32 46h18' stroke='%2305d9e8' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&amp;family=Syncopate:wght@700&amp;display=swap">
+<style>
+body{margin:0;background:#140b1f}
+a{color:#05d9e8;text-decoration:none}
+a:hover{color:#ff2a6d}
+.r{--bg:#140b1f;--bg2:#1b0f2b;--mg:#ff2a6d;--cy:#05d9e8;--vi:#d100ff;--tx:#f5f5f5;--mu:rgba(245,245,245,.88);--dim:rgba(245,245,245,.72);--line:rgba(5,217,232,.22);position:relative;background:var(--bg);color:var(--tx);font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;font-size:16px;line-height:1.75;overflow:hidden;-webkit-font-smoothing:antialiased}
+.r *,.r *::before,.r *::after{box-sizing:border-box}
+.r ::selection{background:#ff2a6d;color:#140b1f}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px;position:relative;z-index:2}
+.scan{position:absolute;inset:0;z-index:60;pointer-events:none;background:repeating-linear-gradient(to bottom,rgba(245,245,245,.015) 0,rgba(245,245,245,.015) 1px,transparent 1px,transparent 3px)}
+
+.nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 24px;padding:14px 0;border-bottom:1px solid var(--line)}
+.logo{font-weight:800;font-size:15px;color:var(--tx);display:inline-flex;align-items:center;min-height:44px}
+.logo .u{color:var(--mg)}
+.logo .p{color:var(--cy)}
+.navl{display:flex;flex-wrap:wrap;gap:2px 4px;font-size:14.5px}
+.navl a{color:var(--mu);padding:0 10px;border-radius:4px;min-height:44px;display:inline-flex;align-items:center}
+.navl a:hover{color:var(--cy);background:rgba(5,217,232,.08)}
+.online{font-size:13.5px;color:var(--mu);display:inline-flex;align-items:center;gap:8px}
+.online i{width:8px;height:8px;border-radius:50%;background:var(--cy);box-shadow:0 0 10px var(--cy);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+
+.hero{position:relative;padding:64px 0 170px}
+.floor{position:absolute;left:-50%;width:200%;bottom:-70px;height:380px;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(209,0,255,.36) 1px,transparent 1px),linear-gradient(90deg,rgba(209,0,255,.36) 1px,transparent 1px);background-size:64px 64px;transform:perspective(300px) rotateX(62deg);transform-origin:50% 100%;-webkit-mask-image:linear-gradient(to top,#000 15%,transparent 80%);mask-image:linear-gradient(to top,#000 15%,transparent 80%);animation:floor 1.5s linear infinite}
+@keyframes floor{to{background-position:0 64px}}
+.horizon{position:absolute;left:0;right:0;bottom:210px;height:1px;background:rgba(255,42,109,.7);box-shadow:0 0 30px 6px rgba(255,42,109,.35);z-index:0}
+.hero-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px;align-items:center;position:relative;z-index:2}
+
+.cmd{font-size:15.5px;color:var(--mu);margin:0 0 18px}
+.cmd .u{color:var(--mg);font-weight:600}
+.cmd .p{color:var(--cy)}
+.cmd .c{color:var(--tx);font-weight:600}
+
+.glitch{font-family:'Syncopate',sans-serif;font-weight:700;font-size:clamp(42px,7vw,96px);line-height:1.02;margin:0 0 24px;text-transform:uppercase;animation:burst 10s infinite}
+@keyframes burst{0%,95%,100%{transform:none}96%{transform:skewX(-4deg) translateX(3px)}97%{transform:none}}
+.gl{display:block;position:relative;color:var(--tx)}
+.gl::before,.gl::after{content:attr(data-text);position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;mix-blend-mode:screen}
+.gl::before{color:var(--mg);transform:translateX(-2px);animation:g1 3.4s infinite steps(1)}
+.gl::after{color:var(--cy);transform:translateX(2px);animation:g2 2.9s infinite steps(1)}
+.gl.o{color:var(--cy);text-shadow:0 0 24px rgba(5,217,232,.4)}
+.gl.o::before{color:var(--mg)}
+.gl.o::after{color:var(--vi)}
+@keyframes g1{0%,100%{clip-path:inset(0 0 100% 0)}8%{clip-path:inset(12% 0 60% 0)}10%{clip-path:inset(68% 0 6% 0)}12%{clip-path:inset(0 0 100% 0)}54%{clip-path:inset(40% 0 42% 0)}56%{clip-path:inset(0 0 100% 0)}}
+@keyframes g2{0%,100%{clip-path:inset(0 0 100% 0)}20%{clip-path:inset(55% 0 20% 0)}22%{clip-path:inset(4% 0 78% 0)}24%{clip-path:inset(0 0 100% 0)}78%{clip-path:inset(30% 0 52% 0)}80%{clip-path:inset(0 0 100% 0)}}
+
+.roles{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:17px;font-weight:600;margin:0 0 16px}
+.roles .s{color:var(--mg)}
+.typed{font-size:18px;line-height:1.6;color:var(--cy);min-height:64px;margin:0 0 30px;max-width:580px}
+.typed .gt{color:var(--mg);font-weight:800}
+.cur{display:inline-block;width:.6em;height:1.1em;background:var(--cy);vertical-align:-.18em;margin-left:3px;animation:blink 1s steps(1) infinite;box-shadow:0 0 10px var(--cy)}
+@keyframes blink{50%{opacity:0}}
+
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 28px}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 20px;font-family:inherit;font-size:15px;font-weight:600;border:1px solid var(--cy);color:var(--cy);background:rgba(20,11,31,.6);border-radius:4px;cursor:pointer;transition:background .15s,color .15s,box-shadow .15s}
+.btn:hover{background:var(--cy);color:#140b1f;box-shadow:0 0 26px rgba(5,217,232,.45)}
+.btn.pri{background:var(--mg);border-color:var(--mg);color:#140b1f}
+.btn.pri:hover{background:#ff5a8e;color:#140b1f;box-shadow:0 0 30px rgba(255,42,109,.6)}
+.facts{display:flex;flex-wrap:wrap;gap:8px}
+.fact{font-size:13.5px;color:var(--mu);border:1px solid var(--line);padding:7px 12px;border-radius:3px;background:rgba(20,11,31,.7)}
+.fact b{color:var(--cy);font-weight:600;margin-right:6px}
+
+.term{background:#0e0717;border:1px solid rgba(255,42,109,.5);border-radius:8px;box-shadow:0 0 0 1px rgba(209,0,255,.18),0 30px 90px rgba(0,0,0,.65),0 0 70px rgba(255,42,109,.2);overflow:hidden;cursor:text}
+.tbar{display:flex;align-items:center;gap:8px;padding:12px 14px;background:#1d1030;border-bottom:1px solid rgba(255,42,109,.3)}
+.dot{width:12px;height:12px;border-radius:50%;flex:none}
+.dot.a{background:var(--mg);box-shadow:0 0 8px rgba(255,42,109,.7)}
+.dot.b{background:var(--vi);box-shadow:0 0 8px rgba(209,0,255,.7)}
+.dot.c{background:var(--cy);box-shadow:0 0 8px rgba(5,217,232,.7)}
+.ttl{flex:1;text-align:center;font-size:13px;color:var(--mu);margin-right:52px}
+.tbody{height:470px;overflow-y:auto;display:flex;flex-direction:column-reverse;padding:16px 18px 18px;font-size:15px;line-height:1.65;scrollbar-width:thin;scrollbar-color:#d100ff transparent}
+.ln{white-space:pre-wrap;word-break:break-word;min-height:1.65em;color:var(--mu)}
+.ln .pre{color:var(--mg);font-weight:600}
+.ln.cmd{color:var(--tx)}
+.ln.hl{color:var(--cy);font-weight:600}
+.ln.dim{color:var(--dim)}
+.ln.err{color:var(--mg)}
+.ln.ok{color:var(--cy)}
+.ln.ban{color:var(--mg);line-height:1.12;white-space:pre;overflow:hidden;text-shadow:0 0 12px rgba(255,42,109,.55)}
+.ln a{color:var(--cy);border-bottom:1px dashed rgba(5,217,232,.55)}
+.ln a:hover{color:var(--mg);border-bottom-color:var(--mg)}
+.pr{display:flex;align-items:center;gap:8px;margin-top:2px}
+.pr label{color:var(--mg);font-weight:600;white-space:nowrap}
+.tin{flex:1;min-width:0;background:transparent;border:0;outline:0;color:var(--tx);font:inherit;caret-color:#05d9e8;padding:4px 0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{font-family:inherit;font-size:14px;color:var(--tx);background:rgba(27,15,43,.92);border:1px solid var(--line);border-radius:3px;min-height:44px;padding:0 14px;cursor:pointer;transition:background .15s,color .15s}
+.chip span{color:var(--mg);margin-right:6px}
+.chip:hover{background:var(--cy);color:#140b1f;border-color:var(--cy)}
+.chip:hover span{color:#140b1f}
+.hint{font-size:13.5px;color:var(--dim);margin:10px 0 0}
+
+.sec{padding:120px 0 0;position:relative}
+.sh{margin:0 0 36px}
+.h2{font-family:'Syncopate',sans-serif;font-weight:700;font-size:clamp(26px,3.4vw,40px);text-transform:uppercase;margin:4px 0 0;display:flex;align-items:baseline;gap:18px;line-height:1.15}
+.h2 .n{font-size:.62em;color:var(--vi);text-shadow:0 0 18px rgba(209,0,255,.7)}
+.panel{background:var(--bg2);border:1px solid var(--line);border-radius:6px;position:relative;overflow:hidden}
+.pbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px 12px;padding:10px 16px;border-bottom:1px solid var(--line);font-size:13.5px;color:var(--mu);background:rgba(36,20,58,.7)}
+.pbar b{color:var(--cy);font-weight:600}
+
+.about{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px;align-items:start}
+.md{padding:18px 20px 22px 0;counter-reset:ln}
+.md p{margin:0;display:grid;grid-template-columns:52px minmax(0,1fr);counter-increment:ln;font-size:16px;line-height:1.75;color:var(--mu);min-height:1.75em;padding:1px 0}
+.md p::before{content:counter(ln);text-align:right;padding-right:18px;color:rgba(245,245,245,.42)}
+.md .h1{color:var(--mg);font-weight:800;font-size:20px}
+.md .h3{color:var(--cy);font-weight:600}
+.md .q{color:var(--tx)}
+.md .k{color:var(--tx);font-weight:600}
+.log{padding:10px 18px 14px;font-size:14.5px}
+.log p{margin:0;display:grid;grid-template-columns:78px 72px minmax(0,1fr);gap:10px;padding:10px 0;border-bottom:1px dashed rgba(5,217,232,.14)}
+.log p:last-child{border-bottom:0}
+.log .h{color:var(--mg)}
+.log .y{color:var(--cy)}
+.log .m{color:var(--tx)}
+
+.dirs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.dir{padding:20px 22px 24px;transition:border-color .2s,box-shadow .2s}
+.dir:hover{border-color:rgba(255,42,109,.65);box-shadow:0 0 34px rgba(255,42,109,.16)}
+.perm{font-size:13px;color:var(--dim);margin:0 0 4px}
+.dn{font-size:20px;font-weight:800;color:var(--cy);margin:0 0 16px}
+.dn span{color:var(--mg)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.tags li{font-size:14px;padding:5px 12px;border:1px solid rgba(245,245,245,.16);border-radius:3px;color:var(--tx);background:rgba(20,11,31,.55)}
+.certs{margin-top:28px}
+.crow{display:grid;grid-template-columns:80px minmax(0,1fr) auto;gap:16px;align-items:center;padding:16px 20px;border-bottom:1px solid rgba(5,217,232,.12);font-size:15.5px}
+.crow:last-child{border-bottom:0}
+.st{font-weight:800;font-size:13.5px}
+.st.ok{color:var(--cy)}
+.st.wip{color:var(--mg)}
+.st.go{color:var(--tx)}
+.corg{display:block;color:var(--mu);font-size:13.5px}
+.cdate{color:var(--mu);font-size:13.5px;text-align:right}
+
+.thm{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.45fr);gap:24px;align-items:start}
+.prof{padding:26px}
+.ava{width:72px;height:72px;border:2px solid var(--mg);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Syncopate',sans-serif;font-weight:700;font-size:22px;color:var(--mg);box-shadow:0 0 22px rgba(255,42,109,.35),inset 0 0 18px rgba(255,42,109,.2);margin:0 0 18px}
+.handle{font-size:24px;font-weight:800;margin:0}
+.since{color:var(--mu);font-size:14.5px;margin:2px 0 22px}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0 0 22px}
+.stat{border:1px solid var(--line);padding:12px 14px;border-radius:4px;background:rgba(20,11,31,.55)}
+.sv{display:block;font-size:20px;font-weight:800;color:var(--cy)}
+.sl{display:block;font-size:13.5px;color:var(--mu)}
+.path{padding:18px 20px;border-bottom:1px solid rgba(5,217,232,.12)}
+.path:last-child{border-bottom:0}
+.ph{display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px 12px;margin:0 0 10px}
+.pn{font-weight:800}
+.ps{font-size:13.5px;color:var(--mg);font-weight:600}
+.bar{height:6px;border-radius:3px;background:rgba(245,245,245,.08);overflow:hidden;position:relative}
+.bar i{position:absolute;top:0;bottom:0;width:32%;background:linear-gradient(90deg,transparent,#05d9e8,transparent);animation:sweep 2.4s ease-in-out infinite}
+.bar.goal{background:repeating-linear-gradient(90deg,rgba(255,42,109,.4) 0,rgba(255,42,109,.4) 8px,transparent 8px,transparent 14px)}
+@keyframes sweep{0%{left:-32%}100%{left:100%}}
+.pd{font-size:15px;line-height:1.7;color:var(--mu);margin:10px 0 0}
+
+.projs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.proj{display:flex;flex-direction:column;transition:transform .2s,border-color .2s,box-shadow .2s}
+.proj:hover{transform:translateY(-4px);border-color:rgba(5,217,232,.65);box-shadow:0 0 34px rgba(5,217,232,.16)}
+.pbody{padding:20px 22px 24px;display:flex;flex-direction:column;gap:12px;flex:1}
+.pk{font-size:13px;color:var(--mg);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin:0}
+.pt{font-size:20px;font-weight:800;margin:0;line-height:1.3}
+.pdsc{font-size:15.5px;line-height:1.7;color:var(--mu);margin:0;flex:1}
+
+.contact{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:stretch}
+.out{padding:22px 24px;font-size:15.5px}
+.out p{margin:0 0 8px;color:var(--mu)}
+.out .o1{color:var(--cy)}
+.out .o2{color:var(--mg);font-weight:600}
+.cbox{padding:28px}
+.big{font-family:'Syncopate',sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(24px,3vw,36px);line-height:1.2;margin:0 0 22px}
+.big em{font-style:normal;color:var(--mg);text-shadow:0 0 22px rgba(255,42,109,.55)}
+.lk{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px;padding:12px 0;border-bottom:1px dashed rgba(5,217,232,.2);font-size:15.5px;min-height:48px;align-items:center}
+.lk .k{color:var(--mu)}
+.lk a{word-break:break-all}
+.cbtn{margin-top:24px}
+
+.foot{margin-top:120px;border-top:1px solid var(--line);padding:28px 0 44px;font-size:14px;color:var(--mu);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+.foot b{color:var(--cy);font-weight:600}
+
+.boot{position:fixed;inset:0;z-index:100;background:#0b0612;padding:44px 36px;font-size:15.5px;line-height:1.7;overflow:hidden}
+.bl{white-space:pre-wrap;color:var(--mu);min-height:1.7em}
+.bl .st{font-weight:800}
+.bl.ok .st{color:var(--cy)}
+.bl.wt .st{color:var(--mg)}
+.bl.hd{color:var(--tx);font-weight:600}
+.bcur{display:inline-block;width:.6em;height:1.1em;background:var(--mg);vertical-align:-.18em;animation:blink .8s steps(1) infinite}
+.skip{position:absolute;right:28px;bottom:28px}
+
+@media (max-width:1024px){.dirs,.projs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:960px){.hero-grid,.about,.thm,.contact{grid-template-columns:minmax(0,1fr)}.hero{padding:40px 0 150px}}
+@media (max-width:640px){
+.wrap{padding:0 16px}
+.dirs,.projs{grid-template-columns:minmax(0,1fr)}
+.sec{padding-top:80px}
+.tbody{height:400px;font-size:14px}
+.tin{font-size:16px}
+.ttl{display:none}
+.gl.o{-webkit-text-stroke-width:1.5px}
+.crow{grid-template-columns:56px minmax(0,1fr)}
+.cdate{grid-column:2;text-align:left}
+.log p{grid-template-columns:66px minmax(0,1fr)}
+.log .y{display:none}
+.lk{grid-template-columns:minmax(0,1fr);gap:2px}
+.md p{grid-template-columns:34px minmax(0,1fr)}
+.md p::before{padding-right:10px}
+.boot{padding:28px 16px;font-size:14px}
+.foot{margin-top:80px}
+}
+@media (prefers-reduced-motion:reduce){.r *,.r *::before,.r *::after{animation:none !important;transition:none !important}}
+</style>
+<style>
+html{scroll-behavior:smooth}
+.sec,.hero{scroll-margin-top:16px}
+:focus-visible{outline:2px solid #05d9e8;outline-offset:3px}
+.term .tin:focus-visible{outline:none}
+</style>
+</head>
+<body>
+<div class="r">
+
+<div class="boot" id="boot" role="status" aria-live="polite">
+<div id="bootLines"></div>
+<span class="bcur" aria-hidden="true"></span>
+<button type="button" class="btn skip" id="skip">Passer la séquence ›</button>
+</div>
+
+<div class="scan" aria-hidden="true"></div>
+
+<div class="wrap">
+<header class="nav">
+<a class="logo" href="#whoami"><span class="u">dylan</span>@cyber:<span class="p">~</span>$</a>
+<nav class="navl" aria-label="Sections">
+<a href="#about">~/about</a>
+<a href="#skills">~/skills</a>
+<a href="#thm">~/tryhackme</a>
+<a href="#projects">~/projects</a>
+<a href="#contact">~/contact</a>
+</nav>
+<span class="online"><i aria-hidden="true"></i>en recherche d’alternance</span>
+</header>
+</div>
+
+<section id="whoami" class="hero">
+<div class="floor" aria-hidden="true"></div>
+<div class="horizon" aria-hidden="true"></div>
+<div class="wrap">
+<div class="hero-grid">
+<div>
+<p class="cmd"><span class="u">dylan@cyber</span>:<span class="p">~</span>$ <span class="c">whoami</span></p>
+<h1 class="glitch"><span class="gl" data-text="Dylan">Dylan</span><span class="gl o" data-text="Mehadi">Mehadi</span></h1>
+<p class="roles"><span>Étudiant en cybersécurité</span><span class="s">|</span><span>Alternant @ Orange</span><span class="s">|</span><span>Futur ingénieur</span></p>
+<p class="typed"><span class="gt">&gt; </span><span id="typed"></span><span class="cur" aria-hidden="true"></span></p>
+<div class="ctas">
+<a class="btn pri" href="#contact">./contact.sh</a>
+<a class="btn" href="https://www.linkedin.com/in/dylan-mehadi-803180349" target="_blank" rel="noopener">LinkedIn ↗</a>
+<a class="btn" href="#thm">tryhackme --user</a>
+</div>
+<div class="facts">
+<span class="fact"><b>now</b>BUT R&amp;T 3 · cyber</span>
+<span class="fact"><b>job</b>Technicien FTTH @ Orange</span>
+<span class="fact"><b>base</b>Auxerre · Sens (89)</span>
+<span class="fact"><b>focus</b>cyber × IA</span>
+</div>
+</div>
+
+<div>
+<div class="term" id="term">
+<div class="tbar">
+<span class="dot a" aria-hidden="true"></span>
+<span class="dot b" aria-hidden="true"></span>
+<span class="dot c" aria-hidden="true"></span>
+<span class="ttl">dylan@cyber: ~ — zsh — 80×24</span>
+</div>
+<div class="tbody">
+<div>
+<div id="tlines" role="log" aria-live="polite"></div>
+<div class="pr">
+<label for="term-in">dylan@cyber:~$</label>
+<input id="term-in" class="tin" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="send" aria-label="Tape une commande, par exemple help">
+</div>
+</div>
+</div>
+</div>
+<div class="chips" id="chips"></div>
+<p class="hint">Tab = auto-complétion · ↑ / ↓ = historique · Ctrl+L = clear</p>
+</div>
+</div>
+</div>
+</section>
+
+<div class="wrap">
+
+<section id="about" class="sec">
+<div class="sh">
+<p class="cmd"><span class="u">dylan@cyber</span>:<span class="p">~</span>$ <span class="c">cat about.md</span></p>
+<h2 class="h2"><span class="n">01</span>À propos</h2>
+</div>
+<div class="about">
+<div class="panel">
+<div class="pbar"><span><b>about.md</b> — markdown</span><span>17 lignes · utf-8</span></div>
+<div class="md">
+<p><span class="h1"># Dylan Mehadi</span></p>
+<p><span class="q">&gt; Étudiant en BUT Réseaux &amp; Télécommunications — 3e année, parcours Cybersécurité, IUT d’Auxerre.</span></p>
+<p></p>
+<p><span class="h3">## Aujourd’hui</span></p>
+<p><span>- Alternant chez <span class="k">Orange</span> : technicien télécom FTTH, agences de Sens et d’Auxerre.</span></p>
+<p><span>- Production et dépannage sur le réseau fibre (GPON), au contact direct des clients.</span></p>
+<p><span>- En parallèle : TryHackMe ~1 h/jour, formation Stormshield CSNA, CTF Root-Me.</span></p>
+<p></p>
+<p><span class="h3">## Objectif</span></p>
+<p><span>- Décrocher une <span class="k">alternance en cybersécurité</span>.</span></p>
+<p><span>- Intégrer une école d’ingénieurs ou un Master labellisé SecNumedu.</span></p>
+<p><span>- Construire ma carrière à l’intersection de la cybersécurité et de l’IA, avec une ouverture à l’international.</span></p>
+<p></p>
+<p><span class="h3">## Ce que j’apporte</span></p>
+<p><span>- Une base réseau solide (Cisco, VLAN, routage) et le réflexe terrain.</span></p>
+<p><span>- La rigueur du technicien : diagnostiquer, documenter, rendre compte.</span></p>
+<p><span>- De l’engagement : Vice-Président (2025) puis Responsable Communication (2026-2027) du BDE R&amp;T.</span></p>
+</div>
+</div>
+<div class="panel">
+<div class="pbar"><span><b>git log</b> --oneline parcours</span><span>HEAD → main</span></div>
+<div class="log">
+<p><span class="h">a1f3c2e</span><span class="y">2026-27</span><span class="m">BUT R&amp;T 3e année — parcours Cybersécurité</span></p>
+<p><span class="h">9e4b7d1</span><span class="y">2026-27</span><span class="m">Responsable Communication — BDE R&amp;T</span></p>
+<p><span class="h">8b0e5f2</span><span class="y">2026</span><span class="m">Formation Stormshield CSNA (en cours)</span></p>
+<p><span class="h">5b8e1f4</span><span class="y">2026</span><span class="m">Cisco — Network Technician Career Path</span></p>
+<p><span class="h">7c2d9a0</span><span class="y">2026</span><span class="m">CCNA — Enterprise Networking, Security &amp; Automation</span></p>
+<p><span class="h">4d0a6c3</span><span class="y">2025-26</span><span class="m">Alternance Orange — technicien FTTH (Sens / Auxerre)</span></p>
+<p><span class="h">3a9f2b8</span><span class="y">2025</span><span class="m">Vice-Président — BDE R&amp;T</span></p>
+<p><span class="h">2f71c0d</span><span class="y">2025</span><span class="m">CCNA — Introduction aux réseaux</span></p>
+<p><span class="h">1e5a3b9</span><span class="y">2025</span><span class="m">Premier login sur TryHackMe</span></p>
+<p><span class="h">0000000</span><span class="y">init</span><span class="m">Bac général — maths, physique-chimie, SVT</span></p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="skills" class="sec">
+<div class="sh">
+<p class="cmd"><span class="u">dylan@cyber</span>:<span class="p">~</span>$ <span class="c">ls -la skills/</span></p>
+<h2 class="h2"><span class="n">02</span>Compétences</h2>
+</div>
+<div class="dirs">
+<div class="panel dir">
+<p class="perm">drwxr-xr-x  dylan  cyber</p>
+<p class="dn">reseaux<span>/</span></p>
+<ul class="tags"><li>TCP/IP</li><li>VLAN &amp; routage</li><li>Cisco IOS</li><li>Packet Tracer</li><li>DNS · BIND9</li></ul>
+</div>
+<div class="panel dir">
+<p class="perm">drwxr-x---  dylan  cyber</p>
+<p class="dn">securite<span>/</span></p>
+<ul class="tags"><li>Stormshield SNS</li><li>VPN IPsec</li><li>TLS · openssl</li><li>Port Security</li><li>Attaques L2 &amp; parades</li></ul>
+</div>
+<div class="panel dir">
+<p class="perm">drwxr-xr-x  dylan  cyber</p>
+<p class="dn">systemes<span>/</span></p>
+<ul class="tags"><li>Linux</li><li>Windows</li><li>VirtualBox</li><li>nmap</li><li>Scapy</li></ul>
+</div>
+<div class="panel dir">
+<p class="perm">drwxr-xr-x  dylan  cyber</p>
+<p class="dn">supervision<span>/</span></p>
+<ul class="tags"><li>Telegraf</li><li>InfluxDB</li><li>Grafana</li><li>Tableaux de bord</li></ul>
+</div>
+<div class="panel dir">
+<p class="perm">drwxr-xr-x  dylan  orange</p>
+<p class="dn">telecom<span>/</span></p>
+<ul class="tags"><li>FTTH · GPON</li><li>Mesures optiques</li><li>Bilans de liaison</li><li>Radio Mobile</li><li>Antennes · 4NEC2</li></ul>
+</div>
+<div class="panel dir">
+<p class="perm">drwxr-xr-x  dylan  cyber</p>
+<p class="dn">code<span>/</span></p>
+<ul class="tags"><li>Python (bases)</li><li>Bash</li><li>SQL · PostgreSQL</li></ul>
+</div>
+</div>
+
+<div class="panel certs">
+<div class="pbar"><span><b>ls -l</b> certs/</span><span>5 entrées</span></div>
+<div class="crow"><span class="st ok">[ OK ]</span><span>CCNA — Introduction aux réseaux<span class="corg">Cisco Networking Academy</span></span><span class="cdate">mai 2025</span></div>
+<div class="crow"><span class="st ok">[ OK ]</span><span>CCNA — Enterprise Networking, Security &amp; Automation<span class="corg">Cisco Networking Academy</span></span><span class="cdate">janv. 2026</span></div>
+<div class="crow"><span class="st ok">[ OK ]</span><span>Network Technician Career Path<span class="corg">Cisco Networking Academy</span></span><span class="cdate">mars 2026</span></div>
+<div class="crow"><span class="st wip">[ .. ]</span><span>CSNA — Certified Stormshield Network Administrator<span class="corg">Stormshield · labs firewall SNS</span></span><span class="cdate">en cours</span></div>
+<div class="crow"><span class="st go">[ &gt;&gt; ]</span><span>PT1 — Junior Penetration Tester<span class="corg">TryHackMe</span></span><span class="cdate">objectif déc. 2026</span></div>
+</div>
+</section>
+
+<section id="thm" class="sec">
+<div class="sh">
+<p class="cmd"><span class="u">dylan@cyber</span>:<span class="p">~</span>$ <span class="c">tryhackme --user Dylanlpb</span></p>
+<h2 class="h2"><span class="n">03</span>TryHackMe</h2>
+</div>
+<div class="thm">
+<div class="panel prof">
+<div class="ava" aria-hidden="true">DM</div>
+<p class="handle">Dylanlpb</p>
+<p class="since">Membre depuis mars 2025</p>
+<div class="stats">
+<div class="stat"><span class="sv">~1 h</span><span class="sl">de pratique par jour</span></div>
+<div class="stat"><span class="sv">3</span><span class="sl">parcours en cours</span></div>
+<div class="stat"><span class="sv">PT1</span><span class="sl">visée avant déc. 2026</span></div>
+<div class="stat"><span class="sv">03/2025</span><span class="sl">premier login</span></div>
+</div>
+<a class="btn" href="https://tryhackme.com/p/Dylanlpb" target="_blank" rel="noopener">Voir le profil ↗</a>
+</div>
+<div class="panel">
+<div class="pbar"><span><b>paths</b> --status</span><span>oct. 2026</span></div>
+<div class="path">
+<div class="ph"><span class="pn">Jr Penetration Tester</span><span class="ps">[ en cours · priorité ]</span></div>
+<div class="bar" aria-hidden="true"><i></i></div>
+<p class="pd">Parcours principal, en préparation de la certification PT1.</p>
+</div>
+<div class="path">
+<div class="ph"><span class="pn">Cyber Security 101</span><span class="ps">[ en cours ]</span></div>
+<div class="bar" aria-hidden="true"><i></i></div>
+<p class="pd">Le socle : réseaux, systèmes, sécurité offensive et défensive.</p>
+</div>
+<div class="path">
+<div class="ph"><span class="pn">Web Fundamentals</span><span class="ps">[ en cours ]</span></div>
+<div class="bar" aria-hidden="true"><i></i></div>
+<p class="pd">Dernier défi : DevTools — Inspector, Console, Network et view-source pour retrouver un flag caché.</p>
+</div>
+<div class="path">
+<div class="ph"><span class="pn">Certification PT1</span><span class="ps">[ objectif · déc. 2026 ]</span></div>
+<div class="bar goal" aria-hidden="true"></div>
+<p class="pd">Examen pratique de pentest junior de TryHackMe.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="projects" class="sec">
+<div class="sh">
+<p class="cmd"><span class="u">dylan@cyber</span>:<span class="p">~</span>$ <span class="c">ls projects/</span></p>
+<h2 class="h2"><span class="n">04</span>Projets &amp; labs</h2>
+</div>
+<div class="projs">
+<article class="panel proj">
+<div class="pbar"><span><b>sae-3.03/</b></span><span>drwxr-xr-x</span></div>
+<div class="pbody">
+<p class="pk">SAÉ 3.03 · BUT R&amp;T</p>
+<h3 class="pt">Réseau sécurisé multi-sites</h3>
+<p class="pdsc">Conception et simulation sous Cisco Packet Tracer d’un réseau d’entreprise réparti sur plusieurs sites, sécurisé et documenté.</p>
+<ul class="tags"><li>Packet Tracer</li><li>Cisco IOS</li><li>VLAN</li><li>Multi-sites</li></ul>
+</div>
+</article>
+<article class="panel proj">
+<div class="pbar"><span><b>r5.11-supervision/</b></span><span>drwxr-xr-x</span></div>
+<div class="pbody">
+<p class="pk">Supervision de la sécurité</p>
+<h3 class="pt">Telegraf → InfluxDB → Grafana</h3>
+<p class="pdsc">Chaîne de supervision entre un serveur Linux Mint et un poste Windows 10 sur réseau interne isolé (10.0.0.0/24) : collecte des métriques et tableaux de bord.</p>
+<ul class="tags"><li>Grafana 11</li><li>InfluxDB</li><li>Telegraf</li><li>VirtualBox</li></ul>
+</div>
+</article>
+<article class="panel proj">
+<div class="pbar"><span><b>stormshield-csna/</b></span><span>drwxr-x---</span></div>
+<div class="pbody">
+<p class="pk">Formation CSNA · en cours</p>
+<h3 class="pt">Pare-feu SNS &amp; VPN IPsec</h3>
+<p class="pdsc">Labs pratiques sur pare-feux Stormshield en salle multi-sites, en binômes, jusqu’à l’établissement de tunnels VPN IPsec entre sites.</p>
+<ul class="tags"><li>Stormshield SNS</li><li>VPN IPsec</li><li>Multi-sites</li></ul>
+</div>
+</article>
+<article class="panel proj">
+<div class="pbar"><span><b>lab-dns-poisoning/</b></span><span>drwxr-x---</span></div>
+<div class="pbody">
+<p class="pk">Lab · attaque &amp; défense</p>
+<h3 class="pt">Empoisonnement de cache DNS</h3>
+<p class="pdsc">Comprendre l’attaque pour mieux la bloquer : serveur BIND9, preuve de concept Python/Scapy en environnement isolé, scan nmap, puis contre-mesures.</p>
+<ul class="tags"><li>BIND9</li><li>Scapy</li><li>nmap</li><li>DNS</li></ul>
+</div>
+</article>
+<article class="panel proj">
+<div class="pbar"><span><b>securite-lan-l2/</b></span><span>drwxr-xr-x</span></div>
+<div class="pbody">
+<p class="pk">Lab · durcissement</p>
+<h3 class="pt">Sécurité LAN couche 2</h3>
+<p class="pdsc">MAC flooding, ARP et DHCP spoofing, manipulation STP : analyse des attaques de couche 2 et durcissement avec Port Security sous Cisco IOS.</p>
+<ul class="tags"><li>Cisco IOS</li><li>Port Security</li><li>VLAN</li><li>ARP · DHCP</li></ul>
+</div>
+</article>
+<article class="panel proj">
+<div class="pbar"><span><b>ctf-root-me/</b></span><span>drwxr-xr-x</span></div>
+<div class="pbody">
+<p class="pk">CTF · en autonomie</p>
+<h3 class="pt">Challenges Root-Me</h3>
+<p class="pdsc">Résolution de challenges pour muscler la logique offensive au service de la défense. [Catégories et score à compléter]</p>
+<ul class="tags"><li>Root-Me</li><li>CTF</li><li>Autonomie</li></ul>
+</div>
+</article>
+</div>
+</section>
+
+<section id="contact" class="sec">
+<div class="sh">
+<p class="cmd"><span class="u">dylan@cyber</span>:<span class="p">~</span>$ <span class="c">./contact.sh</span></p>
+<h2 class="h2"><span class="n">05</span>Contact</h2>
+</div>
+<div class="contact">
+<div class="panel">
+<div class="pbar"><span><b>contact.sh</b> — sortie</span><span>exit 0</span></div>
+<div class="out">
+<p><span class="o1">[*]</span> Résolution de dylan.mehadi … OK</p>
+<p><span class="o1">[*]</span> Ouverture d’un canal chiffré (TLS 1.3) … OK</p>
+<p><span class="o1">[*]</span> Vérification des disponibilités … OK</p>
+<p><span class="o2">[+]</span> Statut : à la recherche d’une alternance en cybersécurité</p>
+<p><span class="o2">[+]</span> Prêt à recevoir votre message.</p>
+</div>
+</div>
+<div class="panel cbox">
+<p class="big">Votre prochain <em>alternant</em> cyber ?</p>
+<div class="lk"><span class="k">email</span><a href="mailto:dylan.mehadi45@gmail.com">dylan.mehadi45@gmail.com</a></div>
+<div class="lk"><span class="k">linkedin</span><a href="https://www.linkedin.com/in/dylan-mehadi-803180349" target="_blank" rel="noopener">linkedin.com/in/dylan-mehadi-803180349</a></div>
+<div class="lk"><span class="k">tryhackme</span><a href="https://tryhackme.com/p/Dylanlpb" target="_blank" rel="noopener">tryhackme.com/p/Dylanlpb</a></div>
+<div class="lk"><span class="k">base</span><span>Auxerre · Sens — Yonne (89)</span></div>
+<a class="btn pri cbtn" href="mailto:dylan.mehadi45@gmail.com">ssh recruteur@dylan → m’écrire</a>
+</div>
+</div>
+</section>
+
+<footer class="foot">
+<span>[process completed] <b>exit 0</b></span>
+<span>© 2026 Dylan Mehadi — portfolio fait main, en mode terminal</span>
+</footer>
+
+</div>
+</div>
+<script>
+(function () {
+  'use strict';
+  var PROMPT = 'dylan@cyber:~$ ';
+  var TAG = 'De la fibre optique au pare-feu : je cherche une alternance en cybersécurité.';
+  var EMAIL = 'dylan.mehadi45@gmail.com';
+  var LINKEDIN = 'https://www.linkedin.com/in/dylan-mehadi-803180349';
+  var THM = 'https://tryhackme.com/p/Dylanlpb';
+
+  var BOOT = [
+    { s: '', t: 'SYNTHWAVE-ROOT BIOS v26.10 — démarrage de dylan@cyber', k: 'hd' },
+    { s: '', t: ' ', k: '' },
+    { s: '[  OK  ] ', t: 'Montage de /home/dylan', k: 'ok' },
+    { s: '[  OK  ] ', t: 'Chargement des modules : réseaux, télécoms, sécurité', k: 'ok' },
+    { s: '[  OK  ] ', t: 'Lien fibre FTTH (GPON) … up', k: 'ok' },
+    { s: '[  OK  ] ', t: 'Pare-feu Stormshield SNS … actif', k: 'ok' },
+    { s: '[  OK  ] ', t: 'Tunnel VPN IPsec … établi', k: 'ok' },
+    { s: '[  OK  ] ', t: 'Supervision Telegraf → InfluxDB → Grafana … en ligne', k: 'ok' },
+    { s: '[  OK  ] ', t: 'Session tryhackme.com/p/Dylanlpb … ouverte', k: 'ok' },
+    { s: '[ WAIT ] ', t: 'Recherche d’une alternance en cybersécurité …', k: 'wt' },
+    { s: '', t: ' ', k: '' },
+    { s: '', t: 'Bienvenue. Lancement du shell…', k: 'hd' }
+  ];
+
+  var CMDS = ['help', 'whoami', 'about', 'skills', 'certs', 'tryhackme', 'projects', 'contact', './contact.sh',
+    'history', 'clear', 'ls', 'cat', 'cd', 'date', 'echo', 'nmap', 'sudo', 'banner', 'exit'];
+  var CHIPS = ['help', 'whoami', 'about', 'skills', 'tryhackme', 'projects', 'contact', 'nmap'];
+
+  var $ = function (id) { return document.getElementById(id); };
+  var out = $('tlines'), input = $('term-in'), term = $('term');
+  var hist = [], hIdx = -1, timers = [];
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function L(t, c, href, pre) { return { t: t, c: c || '', href: href || '', pre: pre || '' }; }
+  function pad(s, n) { while (s.length < n) s += ' '; return s; }
+
+  function addLine(l) {
+    var d = document.createElement('div');
+    d.className = 'ln' + (l.c ? ' ' + l.c : '');
+    var p = document.createElement('span');
+    p.className = 'pre';
+    p.textContent = l.pre;
+    d.appendChild(p);
+    if (l.href) {
+      var a = document.createElement('a');
+      a.href = l.href;
+      a.textContent = l.t;
+      if (l.href.indexOf('http') === 0) { a.target = '_blank'; a.rel = 'noopener'; }
+      d.appendChild(a);
+    } else {
+      d.appendChild(document.createTextNode(l.t));
+    }
+    out.appendChild(d);
+    while (out.childNodes.length > 300) out.removeChild(out.firstChild);
+  }
+  function print(lines) { lines.forEach(addLine); }
+
+  function banner() {
+    return ['██████╗ ███╗   ███╗', '██╔══██╗████╗ ████║', '██║  ██║██╔████╔██║',
+      '██║  ██║██║╚██╔╝██║', '██████╔╝██║ ╚═╝ ██║', '╚═════╝ ╚═╝     ╚═╝']
+      .map(function (s) { return L(s, 'ban'); });
+  }
+  function welcome() {
+    return banner().concat([L(''), L('Dylan Mehadi — shell portfolio v1.0', 'hl'),
+      L('Tape help pour voir les commandes, ou clique sur un raccourci.', 'dim'), L('')]);
+  }
+
+  function exec(k, args) {
+    switch (k) {
+      case 'help': {
+        var rows = [['whoami', 'qui suis-je'], ['about', 'parcours & objectifs'], ['skills', 'compétences techniques'],
+          ['certs', 'certifications'], ['tryhackme', 'progression TryHackMe'], ['projects', 'projets & labs'],
+          ['contact', 'me joindre'], ['history', 'commandes tapées'], ['clear', 'nettoyer l’écran']];
+        return [L('Commandes disponibles :', 'hl')]
+          .concat(rows.map(function (r) { return L(r[1], '', '', '  ' + pad(r[0], 12)); }))
+          .concat([L(''), L('Bonus : ls · cat · cd · date · echo · nmap · sudo · banner', 'dim'),
+            L('Tab = auto-complétion · ↑/↓ = historique · Ctrl+L = clear', 'dim')]);
+      }
+      case 'whoami':
+        return [L('dylan — Dylan Mehadi', 'hl'),
+          L('Étudiant en cybersécurité | Alternant @ Orange | Futur ingénieur'),
+          L('BUT R&T 3e année, parcours Cybersécurité · Auxerre (89)', 'dim')];
+      case 'about':
+        return [L('# about.md', 'hl'),
+          L('BUT Réseaux & Télécoms — 3e année, parcours Cybersécurité (IUT d’Auxerre).'),
+          L('Alternant chez Orange : technicien FTTH, agences de Sens et d’Auxerre.'),
+          L('Je me forme chaque jour : TryHackMe, Stormshield CSNA, CTF Root-Me.'),
+          L('Cap : alternance cyber → école d’ingé / Master SecNumedu → cyber × IA.'),
+          L('→ version complète : ~/about', 'dim', '#about')];
+      case 'skills': {
+        var d = [['reseaux/', 'TCP/IP · VLAN · routage · Cisco IOS · DNS'],
+          ['securite/', 'Stormshield SNS · VPN IPsec · TLS · attaques L2 & parades'],
+          ['systemes/', 'Linux · Windows · VirtualBox · nmap · Scapy'],
+          ['supervision/', 'Telegraf · InfluxDB · Grafana'],
+          ['telecom/', 'FTTH / GPON · mesures optiques · Radio Mobile'],
+          ['code/', 'Python (bases) · Bash · SQL / PostgreSQL']];
+        return d.map(function (x) { return L(x[1], '', '', pad(x[0], 14)); })
+          .concat([L('→ détails : ~/skills', 'dim', '#skills')]);
+      }
+      case 'certs':
+        return [L('CCNA — Introduction aux réseaux · mai 2025', '', '', '[OK]  '),
+          L('CCNA — Enterprise Networking, Security & Automation · janv. 2026', '', '', '[OK]  '),
+          L('Network Technician Career Path · mars 2026', '', '', '[OK]  '),
+          L('Stormshield CSNA · en cours', '', '', '[..]  '),
+          L('TryHackMe PT1 · objectif décembre 2026', '', '', '[>>]  ')];
+      case 'tryhackme':
+      case 'thm':
+        return [L('Dylanlpb', 'hl', '', 'user      '),
+          L('depuis mars 2025', '', '', 'membre    '),
+          L('~1 h par jour', '', '', 'rythme    '),
+          L('Jr Penetration Tester · Cyber Security 101 · Web Fundamentals', '', '', 'parcours  '),
+          L('certification PT1 avant décembre 2026', '', '', 'objectif  '),
+          L('tryhackme.com/p/Dylanlpb', '', THM, 'profil    ')];
+      case 'projects': {
+        var pr = [['sae-3.03/', 'Réseau sécurisé multi-sites (Packet Tracer)'],
+          ['r5.11-supervision/', 'Telegraf → InfluxDB → Grafana'],
+          ['stormshield-csna/', 'Pare-feu SNS & VPN IPsec'],
+          ['lab-dns-poisoning/', 'BIND9 · Scapy · contre-mesures'],
+          ['securite-lan-l2/', 'Attaques L2 & Port Security'],
+          ['ctf-root-me/', 'Challenges en autonomie']];
+        return pr.map(function (x) { return L(x[1], '', '', pad(x[0], 21)); })
+          .concat([L('→ fiches détaillées : ~/projects', 'dim', '#projects')]);
+      }
+      case 'contact':
+      case './contact.sh':
+        return [L('[*] Ouverture d’un canal chiffré… OK', 'ok'),
+          L(EMAIL, '', 'mailto:' + EMAIL, 'email      '),
+          L('linkedin.com/in/dylan-mehadi-803180349', '', LINKEDIN, 'linkedin   '),
+          L('tryhackme.com/p/Dylanlpb', '', THM, 'tryhackme  '),
+          L('Auxerre · Sens (89)', '', '', 'base       ')];
+      case 'history':
+        return hist.map(function (h, i) { return L(h, '', '', '  ' + pad(String(i + 1), 5)); });
+      case 'ls':
+        return [L('about.md  certs/  contact.sh  cv.pdf  projects/  skills/', 'ok')];
+      case 'cat': {
+        var f = args[0] || '';
+        if (!f) return [L('cat : opérande manquant — essaie cat about.md', 'err')];
+        if (f === 'about.md') return exec('about', []);
+        if (f === 'cv.pdf') return [L('cat : cv.pdf : fichier binaire.', 'err'), L('Demande-le-moi directement → contact', 'dim')];
+        if (f === 'contact.sh') return [L('#!/bin/bash', 'dim'), L('echo "Écris-moi : ' + EMAIL + '"'), L('→ exécute-le : ./contact.sh', 'dim')];
+        return [L('cat : ' + f + ' : aucun fichier ou dossier de ce type', 'err')];
+      }
+      case 'cd': {
+        var map = { about: 'about', skills: 'skills', projects: 'projects', contact: 'contact', tryhackme: 'thm', thm: 'thm' };
+        var tgt = (args[0] || '').replace(/^~?\/?/, '').replace(/\/$/, '');
+        if (map[tgt]) {
+          var el = $(map[tgt]);
+          if (el) setTimeout(function () { el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); }, 150);
+          return [L('→ ~/' + tgt, 'ok', '#' + map[tgt])];
+        }
+        return [L('cd : ' + (args[0] || '~') + ' : essaie cd about, skills, projects ou contact', 'err')];
+      }
+      case 'date':
+        return [L(new Date().toLocaleString('fr-FR', { dateStyle: 'full', timeStyle: 'short' }))];
+      case 'echo':
+        return [L(args.join(' '))];
+      case 'nmap':
+        return [L('Starting Nmap — scan de dylan.mehadi', 'dim'),
+          L('PORT       STATE  SERVICE', 'hl'),
+          L('22/tcp     open   curiosite'),
+          L('443/tcp    open   motivation'),
+          L('8080/tcp   open   alternance-cyber'),
+          L('Nmap done : 1 hôte up — recommandation : le recruter.', 'ok')];
+      case 'sudo':
+        return [L('dylan n’est pas dans le fichier sudoers. Cet incident sera signalé.', 'err')];
+      case 'rm':
+        return [L('rm : permission refusée — système en lecture seule. Bien tenté.', 'err')];
+      case 'banner':
+        return banner();
+      case 'exit':
+        return [L('Pas si vite : tape contact pour me joindre.', 'dim')];
+      case 'hello':
+      case 'bonjour':
+      case 'salut':
+        return [L('Salut ! Tape help pour explorer le shell.', 'ok')];
+      default:
+        return [L('zsh: command not found: ' + k, 'err'), L('Tape help pour la liste des commandes.', 'dim')];
+    }
+  }
+
+  function run(raw) {
+    var cmd = (raw || '').trim();
+    addLine(L(raw || '', 'cmd', '', PROMPT));
+    input.value = '';
+    hIdx = -1;
+    if (!cmd) return;
+    var parts = cmd.split(/\s+/);
+    var k = parts[0].toLowerCase();
+    hist.push(cmd);
+    if (k === 'clear') { out.textContent = ''; return; }
+    print(exec(k, parts.slice(1)));
+    addLine(L(''));
+  }
+
+  function complete() {
+    var v = input.value, sp = v.indexOf(' '), pool, base, frag;
+    if (sp === -1) { pool = CMDS; base = ''; frag = v.toLowerCase(); }
+    else {
+      var head = v.slice(0, sp).toLowerCase();
+      if (head === 'cat') pool = ['about.md', 'cv.pdf', 'contact.sh'];
+      else if (head === 'cd') pool = ['about', 'skills', 'projects', 'contact', 'tryhackme'];
+      else return;
+      base = head + ' ';
+      frag = v.slice(sp + 1).trim().toLowerCase();
+    }
+    var m = pool.filter(function (c) { return c.indexOf(frag) === 0; });
+    if (!m.length) return;
+    if (m.length === 1) {
+      var tail = (sp === -1 && (m[0] === 'cat' || m[0] === 'cd' || m[0] === 'echo')) ? ' ' : '';
+      input.value = base + m[0] + tail;
+      return;
+    }
+    var pre = m[0];
+    m.forEach(function (x) { while (x.indexOf(pre) !== 0) pre = pre.slice(0, -1); });
+    addLine(L(v, 'cmd', '', PROMPT));
+    addLine(L(m.join('   '), 'dim'));
+    input.value = base + pre;
+  }
+
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); run(input.value); return; }
+    if (e.key === 'Tab') { e.preventDefault(); complete(); return; }
+    if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (!hist.length) return;
+      hIdx = hIdx === -1 ? hist.length - 1 : Math.max(0, hIdx - 1);
+      input.value = hist[hIdx];
+      return;
+    }
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (hIdx === -1) return;
+      hIdx++;
+      if (hIdx >= hist.length) { hIdx = -1; input.value = ''; } else input.value = hist[hIdx];
+      return;
+    }
+    if (e.ctrlKey && (e.key === 'l' || e.key === 'L')) { e.preventDefault(); out.textContent = ''; return; }
+    if (e.ctrlKey && (e.key === 'c' || e.key === 'C') && input.value) {
+      e.preventDefault();
+      addLine(L(input.value + '^C', 'cmd', '', PROMPT));
+      input.value = '';
+      hIdx = -1;
+    }
+  });
+
+  term.addEventListener('click', function () {
+    var s = window.getSelection && window.getSelection();
+    if (s && String(s).length) return;
+    input.focus({ preventScroll: true });
+  });
+
+  var chips = $('chips');
+  CHIPS.forEach(function (c) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'chip';
+    var sp = document.createElement('span');
+    sp.textContent = '$';
+    b.appendChild(sp);
+    b.appendChild(document.createTextNode(c));
+    b.addEventListener('click', function () { run(c); });
+    chips.appendChild(b);
+  });
+
+  // Boot sequence + typewriter
+  var boot = $('boot'), bootLines = $('bootLines'), done = false;
+  function finishBoot() {
+    if (done) return;
+    done = true;
+    timers.forEach(function (t) { clearInterval(t); clearTimeout(t); });
+    if (boot) boot.remove();
+    try { sessionStorage.setItem('booted', '1'); } catch (e) {}
+    print(welcome());
+    var typed = $('typed');
+    if (reduce) { typed.textContent = TAG; return; }
+    var n = 0;
+    var iv = setInterval(function () {
+      n++;
+      typed.textContent = TAG.slice(0, n);
+      if (n >= TAG.length) clearInterval(iv);
+    }, 36);
+  }
+  $('skip').addEventListener('click', finishBoot);
+  document.addEventListener('keydown', function (e) { if (!done && (e.key === 'Escape' || e.key === 'Enter')) finishBoot(); });
+
+  var seen = false;
+  try { seen = sessionStorage.getItem('booted') === '1'; } catch (e) {}
+  if (seen || reduce) { finishBoot(); }
+  else {
+    var i = 0;
+    var iv = setInterval(function () {
+      var b = BOOT[i++];
+      var d = document.createElement('div');
+      d.className = 'bl' + (b.k ? ' ' + b.k : '');
+      var st = document.createElement('span');
+      st.className = 'st';
+      st.textContent = b.s;
+      d.appendChild(st);
+      d.appendChild(document.createTextNode(b.t));
+      bootLines.appendChild(d);
+      if (i >= BOOT.length) { clearInterval(iv); timers.push(setTimeout(finishBoot, 700)); }
+    }, 150);
+    timers.push(iv);
+  }
+})();
+
+</script>
+</body>
+</html>
