@@ -145,7 +145,9 @@ a:hover{color:#ff2a6d}
 
 .thm{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.45fr);gap:24px;align-items:start}
 .prof{padding:26px}
-.ava{width:72px;height:72px;border:2px solid var(--mg);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Syncopate',sans-serif;font-weight:700;font-size:22px;color:var(--mg);box-shadow:0 0 22px rgba(255,42,109,.35),inset 0 0 18px rgba(255,42,109,.2);margin:0 0 18px}
+.ava{width:72px;height:72px;border:2px solid var(--mg);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Syncopate',sans-serif;font-weight:700;font-size:22px;color:var(--mg);object-fit:cover;overflow:hidden;box-shadow:0 0 22px rgba(255,42,109,.35),inset 0 0 18px rgba(255,42,109,.2);margin:0 0 18px}
+.pfp{display:block;width:118px;height:118px;border-radius:16px;object-fit:cover;object-position:center top;border:2px solid var(--cy);box-shadow:0 0 0 4px rgba(20,11,31,.85),0 0 26px rgba(5,217,232,.4),0 0 46px rgba(255,42,109,.22);margin:0 0 22px}
+@media (max-width:640px){.pfp{width:104px;height:104px}}
 .handle{font-size:24px;font-weight:800;margin:0}
 .since{color:var(--mu);font-size:14.5px;margin:2px 0 22px}
 .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0 0 22px}
@@ -256,6 +258,7 @@ html{scroll-behavior:smooth}
 <div class="wrap">
 <div class="hero-grid">
 <div>
+<img class="pfp" src="assets/dylan.jpg" alt="Portrait de Dylan Mehadi" width="118" height="118">
 <p class="cmd"><span class="u">dylan@cyber</span>:<span class="p">~</span>$ <span class="c">whoami</span></p>
 <h1 class="glitch"><span class="gl" data-text="Dylan">Dylan</span><span class="gl o" data-text="Mehadi">Mehadi</span></h1>
 <p class="roles"><span>Étudiant en cybersécurité</span><span class="s">|</span><span>Alternant @ Orange</span><span class="s">|</span><span>Futur ingénieur</span></p>
@@ -401,7 +404,7 @@ html{scroll-behavior:smooth}
 </div>
 <div class="thm">
 <div class="panel prof">
-<div class="ava" aria-hidden="true">DM</div>
+<img class="ava" src="assets/dylan.jpg" alt="Portrait de Dylan Mehadi" width="72" height="72">
 <p class="handle">Dylanlpb</p>
 <p class="since">Membre depuis mars 2025</p>
 <div class="stats">
