@@ -18,12 +18,28 @@
 body{margin:0;background:#0b1017}
 a{color:#1793d1;text-decoration:none}
 a:hover{color:#367bf0}
-.r{--bg:#0b1017;--bg2:#111826;--mg:#367bf0;--cy:#1793d1;--vi:#2a5fb0;--tx:#e6edf3;--mu:rgba(230,237,243,.88);--dim:rgba(230,237,243,.72);--line:rgba(54,123,240,.18);position:relative;background:var(--bg);color:var(--tx);font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;font-size:16px;line-height:1.72;text-shadow:0 0 2px rgba(54,123,240,.12);overflow:hidden;-webkit-font-smoothing:antialiased}
+.r{--bg:#0b1017;--bg2:#111826;--mg:#367bf0;--cy:#1793d1;--vi:#2a5fb0;--tx:#e6edf3;--mu:rgba(230,237,243,.88);--dim:rgba(230,237,243,.72);--line:rgba(54,123,240,.18);position:relative;padding-top:40px;background:radial-gradient(1100px 650px at 76% -8%,rgba(42,95,176,.30),transparent 58%),radial-gradient(820px 560px at -6% 106%,rgba(23,147,209,.15),transparent 55%),var(--bg);color:var(--tx);font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;font-size:16px;line-height:1.72;text-shadow:0 0 2px rgba(54,123,240,.12);overflow:hidden;-webkit-font-smoothing:antialiased}
 .r *,.r *::before,.r *::after{box-sizing:border-box}
 .r ::selection{background:#367bf0;color:#0b1017}
 .wrap{max-width:1200px;margin:0 auto;padding:0 32px;position:relative;z-index:2}
 .scan{position:absolute;inset:0;z-index:60;pointer-events:none;background:repeating-linear-gradient(to bottom,rgba(230,237,243,.015) 0,rgba(230,237,243,.015) 1px,transparent 1px,transparent 3px)}
 
+.kpanel{position:fixed;top:0;left:0;right:0;height:40px;z-index:70;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 10px;background:rgba(10,15,24,.9);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid rgba(54,123,240,.4);box-shadow:0 1px 0 rgba(255,255,255,.03) inset,0 6px 20px rgba(0,0,0,.4);font-size:13px;color:var(--mu)}
+.kpl,.kpr{display:flex;align-items:center;gap:4px;min-width:0}
+.kapp{display:inline-flex;align-items:center;gap:8px;height:30px;padding:0 11px;border:0;border-radius:6px;background:transparent;color:var(--tx);font:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:background .15s}
+.kapp:hover{background:rgba(54,123,240,.2)}
+.kapp svg{width:17px;height:17px;color:var(--mg);filter:drop-shadow(0 0 5px rgba(54,123,240,.6))}
+.klaunch{display:flex;gap:2px;min-width:0;overflow:hidden}
+.klaunch a{display:inline-flex;align-items:center;height:30px;padding:0 10px;border-radius:6px;color:var(--mu);font-size:12.5px;white-space:nowrap}
+.klaunch a:hover{background:rgba(255,255,255,.07);color:var(--cy)}
+.kstat{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:var(--mu);padding:0 8px;border:1px solid var(--line);border-radius:20px;height:24px}
+.kstat i{width:7px;height:7px;border-radius:50%;background:#27c93f;box-shadow:0 0 8px #27c93f;animation:pulse 2s ease-in-out infinite}
+.ktray{display:inline-flex;align-items:center;gap:11px;color:var(--mu);padding:0 4px}
+.ktray svg{width:15px;height:15px;display:block}
+.kclock{display:inline-flex;align-items:baseline;gap:7px;color:var(--tx);font-variant-numeric:tabular-nums;white-space:nowrap;padding:0 4px 0 2px;font-size:13px}
+.kclock i{font-style:normal;color:var(--mu);font-size:12px}
+@media(max-width:860px){.klaunch{display:none}}
+@media(max-width:600px){.kstat span{display:none}.kclock i{display:none}}
 .nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 24px;padding:14px 0;border-bottom:1px solid var(--line)}
 .logo{font-weight:800;font-size:15px;color:var(--tx);display:inline-flex;align-items:center;min-height:44px}
 .logo .u{color:var(--mg)}
@@ -237,19 +253,27 @@ html{scroll-behavior:smooth}
 
 <div class="scan" aria-hidden="true"></div>
 
-<div class="wrap">
-<header class="nav">
-<a class="logo" href="#whoami"><span class="u">(dylan㉿kali)</span>-[<span class="p">~</span>]</a>
-<nav class="navl" aria-label="Sections">
-<a href="#about">~/about</a>
-<a href="#skills">~/skills</a>
-<a href="#thm">~/tryhackme</a>
-<a href="#projects">~/projects</a>
-<a href="#contact">~/contact</a>
+<header class="kpanel" role="banner">
+<div class="kpl">
+<a class="kapp" href="#whoami" aria-label="Menu applications"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 12c3.2-1.1 5-4.2 9.3-4.2 2.4 0 3.9 1.3 6.2 1.1-.5-1.6-2-2.5-2-2.5 2.2.2 3.7 1.6 4.5 3.4-1.4.3-2.3.1-2.3.1 1.6 1.1 2.3 2.9 2.3 2.9-2.4.9-4.2-.6-6.4-.6-3.1 0-4.6 2.3-8 2.3l2.9 2.6-4.6-.8-1.8 2.7-1-3.7L2 13.9l3-1.1L2 12z"/></svg>Applications</a>
+<nav class="klaunch" aria-label="Sections">
+<a href="#whoami">Terminal</a>
+<a href="#about">about.md</a>
+<a href="#skills">skills</a>
+<a href="#thm">tryhackme</a>
+<a href="#projects">projects</a>
+<a href="#contact">contact</a>
 </nav>
-<span class="online"><i aria-hidden="true"></i>en recherche d’alternance</span>
-</header>
 </div>
+<div class="kpr">
+<span class="kstat"><i aria-hidden="true"></i><span>en recherche d’alternance</span></span>
+<span class="ktray" aria-hidden="true">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19" r="1" fill="currentColor" stroke="none"/></svg>
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 8a4 4 0 0 1 0 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+</span>
+<span class="kclock"><span id="clock"></span><i id="cal"></i></span>
+</div>
+</header>
 
 <section id="whoami" class="hero">
 <div class="floor" aria-hidden="true"></div>
@@ -845,6 +869,17 @@ html{scroll-behavior:smooth}
     }, 150);
     timers.push(iv);
   }
+
+  // Horloge de la barre Kali
+  function tickClock() {
+    var d = new Date();
+    var c = document.getElementById('clock');
+    var k = document.getElementById('cal');
+    if (c) c.textContent = d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+    if (k) k.textContent = d.toLocaleDateString('fr-FR', { weekday: 'short', day: '2-digit', month: 'short' });
+  }
+  tickClock();
+  setInterval(tickClock, 1000);
 })();
 
 </script>
