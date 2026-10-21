@@ -40,6 +40,24 @@ a:hover{color:#367bf0}
 .kclock i{font-style:normal;color:var(--mu);font-size:12px}
 @media(max-width:860px){.klaunch{display:none}}
 @media(max-width:600px){.kstat span{display:none}.kclock i{display:none}}
+.klogin{position:fixed;inset:0;z-index:90;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(1200px 820px at 50% 32%,rgba(42,95,176,.38),transparent 60%),#070c15;padding:24px;animation:klin .4s ease}
+@keyframes klin{from{opacity:0}to{opacity:1}}
+.klogin.out{animation:klout .45s ease forwards}
+@keyframes klout{to{opacity:0;visibility:hidden}}
+.kltop{position:absolute;top:0;left:0;right:0;height:40px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;color:var(--mu);font-size:13px}
+.kltop .klclk{color:var(--tx);font-variant-numeric:tabular-nums}
+.klcard{display:flex;flex-direction:column;align-items:center;gap:14px;width:100%;max-width:350px;text-align:center}
+.klava{width:106px;height:106px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid var(--mg);box-shadow:0 0 0 5px rgba(10,15,24,.7),0 0 36px rgba(54,123,240,.45)}
+.klname{font-size:22px;font-weight:700;color:var(--tx)}
+.klhost{font-size:13px;color:var(--mu);margin-top:-6px}
+.klform{display:flex;width:100%;gap:8px;margin-top:8px}
+.klpass{flex:1;min-width:0;height:46px;padding:0 14px;border-radius:8px;border:1px solid var(--line);background:rgba(10,15,24,.85);color:var(--tx);font:inherit;font-size:15px;outline:none}
+.klpass:focus{border-color:var(--mg);box-shadow:0 0 0 3px rgba(54,123,240,.25)}
+.kllogin{height:46px;padding:0 18px;border:0;border-radius:8px;background:var(--mg);color:#06101f;font:inherit;font-weight:700;cursor:pointer;white-space:nowrap;transition:background .15s,box-shadow .15s}
+.kllogin:hover{background:#5b95f5;box-shadow:0 0 24px rgba(54,123,240,.5)}
+.klhint{font-size:12.5px;color:var(--dim);margin-top:2px}
+.klfoot{position:absolute;bottom:18px;left:0;right:0;text-align:center;font-size:12.5px;color:var(--dim)}
+@media(max-width:480px){.klform{flex-direction:column}.kllogin{width:100%}}
 .nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 24px;padding:14px 0;border-bottom:1px solid var(--line)}
 .logo{font-weight:800;font-size:15px;color:var(--tx);display:inline-flex;align-items:center;min-height:44px}
 .logo .u{color:var(--mg)}
@@ -249,6 +267,22 @@ html{scroll-behavior:smooth}
 <div id="bootLines"></div>
 <span class="bcur" aria-hidden="true"></span>
 <button type="button" class="btn skip" id="skip">Passer la séquence ›</button>
+</div>
+
+
+<div class="klogin" id="klogin" style="display:none">
+<div class="kltop"><span>Kali GNU/Linux Rolling</span><span class="klclk" id="lclock"></span></div>
+<div class="klcard">
+<img class="klava" src="assets/dylan.jpg" alt="Dylan Mehadi" width="106" height="106">
+<div class="klname">dylan</div>
+<div class="klhost">session dylan · machine kali</div>
+<div class="klform">
+<input id="klpass" class="klpass" type="password" value="kali" aria-label="Mot de passe" autocomplete="off" spellcheck="false">
+<button type="button" id="kllogin" class="kllogin">Se connecter →</button>
+</div>
+<div class="klhint">Mot de passe déjà rempli — clique sur « Se connecter » (ou Entrée).</div>
+</div>
+<div class="klfoot">tty1 · kali · appuie sur Entrée pour ouvrir la session</div>
 </div>
 
 <div class="scan" aria-hidden="true"></div>
@@ -574,19 +608,19 @@ html{scroll-behavior:smooth}
   var GITHUB = 'https://github.com/dylanmehadi45';
 
   var BOOT = [
-    { s: '', t: 'SYNTHWAVE-ROOT BIOS v26.10 — démarrage de dylan@cyber', k: 'hd' },
+    { s: '', t: 'GNU GRUB  version 2.06', k: 'hd' },
+    { s: '', t: '  *Kali GNU/Linux', k: '' },
     { s: '', t: ' ', k: '' },
-    { s: '[  OK  ] ', t: 'Montage de /home/dylan', k: 'ok' },
-    { s: '[  OK  ] ', t: 'Chargement des modules : réseaux, télécoms, sécurité', k: 'ok' },
-    { s: '[  OK  ] ', t: 'Lien fibre FTTH (GPON) … up', k: 'ok' },
-    { s: '[  OK  ] ', t: 'Pare-feu Stormshield SNS … actif', k: 'ok' },
-    { s: '[  OK  ] ', t: 'Tunnel VPN IPsec … établi', k: 'ok' },
-    { s: '[  OK  ] ', t: 'Supervision Telegraf → InfluxDB → Grafana … en ligne', k: 'ok' },
-    { s: '[  OK  ] ', t: 'Session tryhackme.com/p/Dylanlpb … ouverte', k: 'ok' },
-    { s: '[ WAIT ] ', t: 'Recherche d’une alternance en cybersécurité …', k: 'wt' },
+    { s: '[  OK  ] ', t: 'Reached target Basic System.', k: 'ok' },
+    { s: '[  OK  ] ', t: 'Started NetworkManager.service.', k: 'ok' },
+    { s: '[  OK  ] ', t: 'Started OpenSSH server daemon.', k: 'ok' },
+    { s: '[  OK  ] ', t: 'Started PostgreSQL RDBMS (Metasploit).', k: 'ok' },
+    { s: '[  OK  ] ', t: 'Started Permit User Sessions.', k: 'ok' },
+    { s: '[  OK  ] ', t: 'Reached target Graphical Interface.', k: 'ok' },
+    { s: '[ WAIT ] ', t: 'Starting Light Display Manager…', k: 'wt' },
     { s: '', t: ' ', k: '' },
-    { s: '', t: 'Bienvenue. Lancement du shell…', k: 'hd' }
-  ];
+    { s: '', t: 'Kali GNU/Linux Rolling  kali  tty1', k: 'hd' }
+  ]
 
   var CMDS = ['help', 'whoami', 'about', 'skills', 'certs', 'tryhackme', 'projects', 'contact', './contact.sh',
     'history', 'clear', 'ls', 'cat', 'cd', 'date', 'echo', 'nmap', 'sudo', 'banner', 'exit'];
@@ -829,45 +863,60 @@ html{scroll-behavior:smooth}
     chips.appendChild(b);
   });
 
-  // Boot sequence + typewriter
-  var boot = $('boot'), bootLines = $('bootLines'), done = false;
-  function finishBoot() {
-    if (done) return;
-    done = true;
-    timers.forEach(function (t) { clearInterval(t); clearTimeout(t); });
-    if (boot) boot.remove();
-    try { sessionStorage.setItem('booted', '1'); } catch (e) {}
+  // Boot -> login -> bureau
+  var boot = $('boot'), bootLines = $('bootLines'), started = false, phase = 'boot';
+  function startTerminal() {
+    if (started) return;
+    started = true;
     print(welcome());
     var typed = $('typed');
     if (reduce) { typed.textContent = TAG; return; }
     var n = 0;
-    var iv = setInterval(function () {
-      n++;
-      typed.textContent = TAG.slice(0, n);
-      if (n >= TAG.length) clearInterval(iv);
-    }, 36);
+    var iv = setInterval(function () { n++; typed.textContent = TAG.slice(0, n); if (n >= TAG.length) clearInterval(iv); }, 36);
+    timers.push(iv);
   }
-  $('skip').addEventListener('click', finishBoot);
-  document.addEventListener('keydown', function (e) { if (!done && (e.key === 'Escape' || e.key === 'Enter')) finishBoot(); });
+  function loginDone() {
+    var el = $('klogin');
+    if (el) { el.classList.add('out'); setTimeout(function () { el.style.display = 'none'; }, 460); }
+    startTerminal();
+  }
+  function showLogin() {
+    var el = $('klogin');
+    if (!el) { startTerminal(); return; }
+    el.style.display = 'flex';
+    var btn = $('kllogin'), pass = $('klpass');
+    if (btn) btn.addEventListener('click', loginDone);
+    if (pass) { pass.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); loginDone(); } }); try { pass.focus(); } catch (e) {} }
+  }
+  function bootDone() {
+    if (phase !== 'boot') return;
+    phase = 'login';
+    timers.forEach(function (t) { clearInterval(t); clearTimeout(t); });
+    if (boot) boot.remove();
+    try { sessionStorage.setItem('booted', '1'); } catch (e) {}
+    showLogin();
+  }
+  if ($('skip')) $('skip').addEventListener('click', bootDone);
+  document.addEventListener('keydown', function (e) { if (phase === 'boot' && (e.key === 'Escape' || e.key === 'Enter')) bootDone(); });
 
   var seen = false;
   try { seen = sessionStorage.getItem('booted') === '1'; } catch (e) {}
-  if (seen || reduce) { finishBoot(); }
-  else {
+  if (seen || reduce) {
+    phase = 'desktop';
+    if (boot) boot.remove();
+    startTerminal();
+  } else {
     var i = 0;
-    var iv = setInterval(function () {
-      var b = BOOT[i++];
+    var ivb = setInterval(function () {
+      var bl = BOOT[i++];
       var d = document.createElement('div');
-      d.className = 'bl' + (b.k ? ' ' + b.k : '');
-      var st = document.createElement('span');
-      st.className = 'st';
-      st.textContent = b.s;
-      d.appendChild(st);
-      d.appendChild(document.createTextNode(b.t));
+      d.className = 'bl' + (bl.k ? ' ' + bl.k : '');
+      var st = document.createElement('span'); st.className = 'st'; st.textContent = bl.s;
+      d.appendChild(st); d.appendChild(document.createTextNode(bl.t));
       bootLines.appendChild(d);
-      if (i >= BOOT.length) { clearInterval(iv); timers.push(setTimeout(finishBoot, 700)); }
+      if (i >= BOOT.length) { clearInterval(ivb); timers.push(setTimeout(bootDone, 700)); }
     }, 150);
-    timers.push(iv);
+    timers.push(ivb);
   }
 
   // Horloge de la barre Kali
@@ -875,7 +924,10 @@ html{scroll-behavior:smooth}
     var d = new Date();
     var c = document.getElementById('clock');
     var k = document.getElementById('cal');
-    if (c) c.textContent = d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+    var lc = document.getElementById('lclock');
+    var tt = d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+    if (c) c.textContent = tt;
+    if (lc) lc.textContent = tt;
     if (k) k.textContent = d.toLocaleDateString('fr-FR', { weekday: 'short', day: '2-digit', month: 'short' });
   }
   tickClock();
