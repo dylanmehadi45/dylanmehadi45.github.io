@@ -40,6 +40,19 @@ a:hover{color:#367bf0}
 .kclock i{font-style:normal;color:var(--mu);font-size:12px}
 @media(max-width:860px){.klaunch{display:none}}
 @media(max-width:600px){.kstat span{display:none}.kclock i{display:none}}
+.kappwrap{position:relative;display:inline-flex}
+.kmenu{position:absolute;top:44px;left:0;width:274px;max-height:min(72vh,560px);overflow-y:auto;background:rgba(12,18,30,.98);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(54,123,240,.42);border-radius:11px;box-shadow:0 24px 70px rgba(0,0,0,.6);padding:8px;z-index:5;display:none}
+.kmenu.open{display:block;animation:kmin .14s ease}
+@keyframes kmin{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.kmsec{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);padding:9px 10px 5px}
+.kmi{display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:9px 10px;border-radius:8px;color:var(--tx);font:inherit;font-size:13.5px;line-height:1.3;background:transparent;border:0;cursor:pointer;text-decoration:none}
+.kmi:hover,.kmi:focus-visible{background:rgba(54,123,240,.2);color:#fff;outline:none}
+.kmi svg{width:18px;height:18px;color:var(--cy);flex:none}
+.kmi small{display:block;color:var(--mu);font-size:11.5px;font-weight:400;margin-top:1px}
+.kmsep{height:1px;background:rgba(54,123,240,.2);margin:6px 4px}
+.kmbackdrop{position:fixed;inset:0;z-index:69;display:none}
+.kmbackdrop.open{display:block}
+@media(max-width:600px){.kmenu{width:min(84vw,274px)}}
 .klogin{position:fixed;inset:0;z-index:90;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(1200px 820px at 50% 32%,rgba(42,95,176,.38),transparent 60%),#070c15;padding:24px;animation:klin .4s ease}
 @keyframes klin{from{opacity:0}to{opacity:1}}
 .klogin.out{animation:klout .45s ease forwards}
@@ -289,7 +302,26 @@ html{scroll-behavior:smooth}
 
 <header class="kpanel" role="banner">
 <div class="kpl">
-<a class="kapp" href="#whoami" aria-label="Menu applications"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 12c3.2-1.1 5-4.2 9.3-4.2 2.4 0 3.9 1.3 6.2 1.1-.5-1.6-2-2.5-2-2.5 2.2.2 3.7 1.6 4.5 3.4-1.4.3-2.3.1-2.3.1 1.6 1.1 2.3 2.9 2.3 2.9-2.4.9-4.2-.6-6.4-.6-3.1 0-4.6 2.3-8 2.3l2.9 2.6-4.6-.8-1.8 2.7-1-3.7L2 13.9l3-1.1L2 12z"/></svg>Applications</a>
+<div class="kappwrap">
+<button type="button" class="kapp" id="kappbtn" aria-haspopup="true" aria-expanded="false" aria-controls="kmenu"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 12c3.2-1.1 5-4.2 9.3-4.2 2.4 0 3.9 1.3 6.2 1.1-.5-1.6-2-2.5-2-2.5 2.2.2 3.7 1.6 4.5 3.4-1.4.3-2.3.1-2.3.1 1.6 1.1 2.3 2.9 2.3 2.9-2.4.9-4.2-.6-6.4-.6-3.1 0-4.6 2.3-8 2.3l2.9 2.6-4.6-.8-1.8 2.7-1-3.7L2 13.9l3-1.1L2 12z"/></svg>Applications</button>
+<div class="kmenu " id="kmenu" role="menu" aria-label="Applications">
+<div class="kmsec">Favoris</div>
+<a class="kmi" role="menuitem" href="#whoami"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9l3 3-3 3"/><path d="M13 15h4"/></svg><span>Terminal<small>le shell interactif</small></span></a>
+<a class="kmi" role="menuitem" href="#about"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h8l4 4v16H6z"/><path d="M14 2v4h4"/><path d="M9 13h6M9 17h6"/></svg><span>about.md<small>mon parcours</small></span></a>
+<a class="kmi" role="menuitem" href="#skills"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Compétences<small>réseau, sécurité, systèmes</small></span></a>
+<a class="kmi" role="menuitem" href="#thm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.3" fill="currentColor"/></svg><span>TryHackMe<small>ma progression</small></span></a>
+<a class="kmi" role="menuitem" href="#projects"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M3 7h6l2 2h10v10H3z"/></svg><span>Projets<small>mes dépôts GitHub</small></span></a>
+<a class="kmi" role="menuitem" href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span>Contact<small>me joindre</small></span></a>
+<div class="kmsep"></div>
+<div class="kmsec">Web</div>
+<a class="kmi" role="menuitem" href="https://github.com/dylanmehadi45" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 2.6 15.4 0 18M12 3c-2.6 2.6-2.6 15.4 0 18"/></svg><span>GitHub ↗</span></a>
+<a class="kmi" role="menuitem" href="https://www.linkedin.com/in/dylan-mehadi-803180349" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 2.6 15.4 0 18M12 3c-2.6 2.6-2.6 15.4 0 18"/></svg><span>LinkedIn ↗</span></a>
+<a class="kmi" role="menuitem" href="https://tryhackme.com/p/Dylanlpb" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 2.6 15.4 0 18M12 3c-2.6 2.6-2.6 15.4 0 18"/></svg><span>TryHackMe.com ↗</span></a>
+<div class="kmsep"></div>
+<button type="button" class="kmi" role="menuitem" id="kmlock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>Verrouiller la session</span></button>
+</div>
+<div class="kmbackdrop " id="kmbackdrop" aria-hidden="true"></div>
+</div>
 <nav class="klaunch" aria-label="Sections">
 <a href="#whoami">Terminal</a>
 <a href="#about">about.md</a>
@@ -880,13 +912,19 @@ html{scroll-behavior:smooth}
     if (el) { el.classList.add('out'); setTimeout(function () { el.style.display = 'none'; }, 460); }
     startTerminal();
   }
+  var loginWired = false;
   function showLogin() {
     var el = $('klogin');
     if (!el) { startTerminal(); return; }
+    el.classList.remove('out');
     el.style.display = 'flex';
     var btn = $('kllogin'), pass = $('klpass');
-    if (btn) btn.addEventListener('click', loginDone);
-    if (pass) { pass.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); loginDone(); } }); try { pass.focus(); } catch (e) {} }
+    if (!loginWired) {
+      loginWired = true;
+      if (btn) btn.addEventListener('click', loginDone);
+      if (pass) pass.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); loginDone(); } });
+    }
+    if (pass) { try { pass.focus(); pass.select(); } catch (e) {} }
   }
   function bootDone() {
     if (phase !== 'boot') return;
@@ -918,6 +956,27 @@ html{scroll-behavior:smooth}
     }, 150);
     timers.push(ivb);
   }
+
+  // Menu Applications (dropdown)
+  var kappbtn = $('kappbtn'), kmenu = $('kmenu'), kback = $('kmbackdrop');
+  function setMenu(open) {
+    if (kmenu) kmenu.classList.toggle('open', open);
+    if (kback) kback.classList.toggle('open', open);
+    if (kappbtn) kappbtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  function closeMenu() { setMenu(false); }
+  if (kappbtn) kappbtn.addEventListener('click', function (e) { e.stopPropagation(); setMenu(!(kmenu && kmenu.classList.contains('open'))); });
+  if (kback) kback.addEventListener('click', closeMenu);
+  if (kmenu) {
+    var items = kmenu.querySelectorAll('.kmi');
+    for (var mi = 0; mi < items.length; mi++) {
+      items[mi].addEventListener('click', function (e) {
+        if (this.id === 'kmlock') { e.preventDefault(); closeMenu(); showLogin(); return; }
+        closeMenu();
+      });
+    }
+  }
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
 
   // Horloge de la barre Kali
   function tickClock() {
